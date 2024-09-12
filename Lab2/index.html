@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload File and Text Input</title>
+</head>
+<body>
+<h2>Upload a File</h2>
+<form action="process.php" method="post" enctype="multipart/form-data">
+    <input type="file" name="fileToUpload" required>
+    <input type="submit" value="Upload File">
+</form>
+
+<h2>Enter Text to Write to File</h2>
+<form action="text.php" method="post">
+    <label for="textToWrite">Your Text:</label>
+    <textarea name="textToWrite" id="textToWrite" rows="4" cols="50" required></textarea>
+    <br>
+    <input type="submit" value="Submit Text">
+</form>
+
+<h2>List of Uploaded Files</h2>
+<a href="list.php">View Uploaded Files</a>
+</body>
+</html>
