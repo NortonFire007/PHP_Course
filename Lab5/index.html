@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Категорії товарів</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<h1>Виберіть категорію товарів або додайте нову категорію</h1>
+
+<form method="POST" action="">
+    <label for="category">Категорія:</label>
+    <select name="category" id="category" required>
+        <option value="">--Оберіть категорію--</option>
+        <?php foreach ($categories as $category_name): ?>
+        <option value="<?= htmlspecialchars($category_name) ?>"><?= htmlspecialchars($category_name) ?></option>
+        <?php endforeach; ?>
+    </select>
+    <button type="submit">Показати товари</button>
+</form>
+
+<h2>Товари в категорії: <?= htmlspecialchars($selected_category) ?></h2>
+<div class="products">
+    <?= $products_info ? $products_info : "Виберіть категорію для перегляду товарів." ?>
+</div>
+
+<h1>Додати нову категорію</h1>
+<form method="POST" action="">
+    <label for="new_category">Нова категорія:</label>
+    <input type="text" name="new_category" id="new_category" required>
+    <button type="submit">Додати категорію</button>
+</form>
+
+<h1>Додати звичайний товар</h1>
+<form method="POST" action="">
+    <label for="regular_product_name">Назва товару:</label>
+    <input type="text" name="regular_product_name" id="regular_product_name" required>
+
+    <label for="regular_product_price">Ціна:</label>
+    <input type="number" step="0.01" name="regular_product_price" id="regular_product_price" required>
+
+    <label for="regular_product_description">Опис:</label>
+    <textarea name="regular_product_description" id="regular_product_description" required></textarea>
+
+    <label for="category">Категорія:</label>
+    <select name="category" id="category_regular" required>
+        <option value="">--Оберіть категорію--</option>
+        <?php foreach ($categories as $category_name): ?>
+        <option value="<?= htmlspecialchars($category_name) ?>"><?= htmlspecialchars($category_name) ?></option>
+        <?php endforeach; ?>
+    </select>
+
+    <button type="submit" name="regular_product">Додати звичайний товар</button>
+</form>
+
+<h1>Додати товар зі знижкою</h1>
+<form method="POST" action="">
+    <label for="discounted_product_name">Назва товару:</label>
+    <input type="text" name="discounted_product_name" id="discounted_product_name" required>
+
+    <label for="discounted_product_price">Ціна:</label>
+    <input type="number" step="0.01" name="discounted_product_price" id="discounted_product_price" required>
+
+    <label for="discounted_product_description">Опис:</label>
+    <textarea name="discounted_product_description" id="discounted_product_description" required></textarea>
+
+    <label for="product_discount">Знижка (%):</label>
+    <input type="number" name="product_discount" id="product_discount" required>
+
+    <label for="category_discount">Категорія:</label>
+    <select name="category_discount" id="category_discount" required>
+        <option value="">--Оберіть категорію--</option>
+        <?php foreach ($categories as $category_name): ?>
+        <option value="<?= htmlspecialchars($category_name) ?>"><?= htmlspecialchars($category_name) ?></option>
+        <?php endforeach; ?>
+    </select>
+
+    <button type="submit" name="discounted_product">Додати товар зі знижкою</button>
+</form>
+</body>
+</html>
